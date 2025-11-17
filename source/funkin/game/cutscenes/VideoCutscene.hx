@@ -60,7 +60,6 @@ class VideoCutscene extends Cutscene {
 
 		add(video = new FlxVideoSprite());
 		video.antialiasing = true;
-		video.autoPause = false;  // Imma handle it better inside this class, mainly because of the pause menu  - Nex
 		video.bitmap.onEndReached.add(close);
 		video.bitmap.onFormatSetup.add(function() if (video.bitmap != null && video.bitmap.bitmapData != null) {
 			final width = video.bitmap.bitmapData.width;
@@ -203,16 +202,6 @@ class VideoCutscene extends Cutscene {
 			setSubtitle(subtitles[curSubtitle]);
 			curSubtitle++;
 		}
-	}
-
-	@:dox(hide) override public function onFocus() {
-		if(FlxG.autoPause && !paused) video.resume();
-		super.onFocus();
-	}
-
-	@:dox(hide) override public function onFocusLost() {
-		if(FlxG.autoPause && !paused) video.pause();
-		super.onFocusLost();
 	}
 
 	public override function pauseCutscene() {

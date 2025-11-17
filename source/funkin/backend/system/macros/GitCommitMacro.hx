@@ -183,11 +183,9 @@ class GitCommitMacro {
 		return macro $v{false};
 		#else
 		try {
-			var process = new Process("git", ["status", "--porcelain"], false);
-			if (process.exitCode() != 0)
-				throw 'Could not fetch current branch';
-
-			return macro $v{process.stdout.readLine().toString() != ""};
+			// thanks sector! - rich
+			var process = new Process("git", ["diff", "--quiet"], false);
+			return macro $v{process.exitCode() == 1};
 		} catch(e) {}
 		return macro $v{false}
 		#end
