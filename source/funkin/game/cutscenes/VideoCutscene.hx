@@ -65,10 +65,7 @@ class VideoCutscene extends Cutscene {
 		#end
 		video.bitmap.onEndReached.add(close);
 		video.bitmap.onFormatSetup.add(function() if (video.bitmap != null && video.bitmap.bitmapData != null) {
-			final width = video.bitmap.bitmapData.width;
-			final height = video.bitmap.bitmapData.height;
-			final scale:Float = Math.min(FlxG.width / width, FlxG.height / height);
-			video.setGraphicSize(Std.int(width * scale), Std.int(height * scale));
+			video.setGraphicSize(FlxG.width, FlxG.height);
 			video.updateHitbox();
 			video.screenCenter();
 		});
