@@ -3,9 +3,9 @@
 	<!-- _________________________ Application Settings _________________________ -->
 	<app
 		title="You're gonna die at 3am >:)" main="funkin.backend.system.Main"
-		file="youre-gonna-die-at-3am" packageName="com.yoshman29.codenameengine"
-		package="com.yoshman29.codenameengine"
-		version="1.0.1" company="Yoshman29" />
+		file="youre-gonna-die-at-3am" packageName="com.vr8klis.yagda3am"
+		package="com.vr8klis.yagda3am"
+		version="3.0.0" company="Vr8klis" />
 
 	<!--
 		CHANGE THE SAVE PATH & NAME FOR YOUR MOD HERE!
