@@ -282,6 +282,7 @@ class FlxSound extends FlxBasic {
 		@:bypassAccessor endTime = null;
 		autoDestroy = false;
 		visible = false;
+		exists = false;
 		target = null;
 		radius = 0;
 		proximityPan = true;
@@ -409,7 +410,7 @@ class FlxSound extends FlxBasic {
 	 * @return	This FlxSound instance (nice for chaining stuff together, if you're into that).
 	 */
 	public function loadEmbedded(embeddedSound:FlxSoundAsset, looped = false, autoDestroy = false, ?onComplete:Void->Void):FlxSound {
-		if (!exists || embeddedSound == null) return this;
+		if (embeddedSound == null) return this;
 		cleanup(true);
 
 		if ((embeddedSound is Sound)) _sound = embeddedSound;
@@ -438,7 +439,6 @@ class FlxSound extends FlxBasic {
 	 * @return	This FlxSound instance (nice for chaining stuff together, if you're into that).
 	 */
 	public function loadStream(soundURL:String, looped = false, autoDestroy = false, ?onComplete:Void->Void, ?onLoad:Void->Void):FlxSound {
-		if (!exists) return this;
 		cleanup(true);
 
 		_sound = new Sound();
@@ -473,7 +473,6 @@ class FlxSound extends FlxBasic {
 	 * @return	This FlxSound instance (nice for chaining stuff together, if you're into that).
 	 */
 	public function loadByteArray(bytes:ByteArray, looped = false, autoDestroy = false, ?onComplete:Void->Void):FlxSound {
-		if (!exists) return this;
 		cleanup(true);
 
 		_sound = new Sound();
@@ -493,6 +492,7 @@ class FlxSound extends FlxBasic {
 		else _length = 0;
 
 		endTime = null;
+		exists = true;
 
 		return this;
 	}
